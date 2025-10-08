@@ -45,7 +45,7 @@ contract TokenContract {
         uint256 requiredEther = _amount * TOKEN_PRICE;
         require(msg.value >= requiredEther, "Insufficient Ether sent");
         
-        // Transferir tokens del owner al comprador
+        
         users[owner].tokens -= _amount;
         users[msg.sender].tokens += _amount;
         
@@ -72,13 +72,13 @@ contract TokenContract {
         return users[msg.sender].tokens;
     }
 
-    // Función para obtener información del usuario
+    // Función para obtener info del usuario
     function getUserInfo(address _user) public view returns (string memory, uint256) {
         return (users[_user].name, users[_user].tokens);
     }
 
-    // Función receive para recibir Ether directamente (opcional)
+    // Función receive 
     receive() external payable {
-        // Los usuarios pueden enviar Ether directamente, pero deben usar buyTokens para comprar tokens
+        
     }
 }
